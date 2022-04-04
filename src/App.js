@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-
+import Router from './Router'
 import './App.css'
 import Navbar from './components/Sidebar/Navbar';
 function App() {
@@ -11,7 +11,7 @@ function App() {
                 openNavbar={openNavbar}
                 setOpenNavbar={setOpenNavbar}/>
             </div>
-                 <div className={openNavbar?'set-with-router':'set-with-router-open'}>Cc</div>
+                 <div className={openNavbar?'set-with-router':'set-with-router-open'}><Router/></div>
             </div>
     </div>
   );

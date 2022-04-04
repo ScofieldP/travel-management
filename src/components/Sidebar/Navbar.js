@@ -27,7 +27,7 @@ function Navbar({openNavbar, setOpenNavbar}) {
     <>
         <div className={openNavbar?'sidebar':'sidebar open'} >
             <div className="logo-details">
-                <div className="logo_name">Quản lý khách sạn</div>
+                <div className="logo_name">Nhà hàng</div>
                 <i className='bx bx-menu' id="btn" onClick={() => setOpenNavbar(!openNavbar)}>
                     <FontAwesomeIcon icon={openNavbar ? faBars : faAngleDoubleLeft} />
                 </i>
@@ -42,11 +42,11 @@ function Navbar({openNavbar, setOpenNavbar}) {
                     <span className="tooltip">Nhân viên</span>
                 </li>
                 <li>
-                    <a href ="/room">
+                    <a href ="/table">
                         <i className='bx bx-user' ><FontAwesomeIcon icon={faBed} /></i>
-                        <span className="links_name">Phòng</span>
+                        <span className="links_name">Bàn ăn</span>
                     </a>            
-                    <span className="tooltip">Phòng</span>
+                    <span className="tooltip">Bàn ăn</span>
                 </li>
                 <li>
                     <a href ="/customer">
@@ -56,12 +56,20 @@ function Navbar({openNavbar, setOpenNavbar}) {
                     <span className="tooltip">Khách hàng</span>
                 </li>
                 <li>
-                    <a href ="/service">
+                    <a href ="/food">
                         <i className='bx bx-user' ><FontAwesomeIcon icon={faShoppingCart} /></i>
-                        <span className="links_name">Dịch vụ</span>
+                        <span className="links_name">Món ăn</span>
                     </a>           
-                    <span className="tooltip">Dịch vụ</span>
+                    <span className="tooltip">Món ăn</span>
                 </li>
+                <li>
+                    <a href ="/voucher">
+                        <i className='bx bx-user' ><FontAwesomeIcon icon={faShoppingCart} /></i>
+                        <span className="links_name">Voucher</span>
+                    </a>           
+                    <span className="tooltip">Voucher</span>
+                </li>
+
 
                 {/* list menu */}
                 <li onClick={() => setOpenList(!openList)}>
@@ -73,32 +81,25 @@ function Navbar({openNavbar, setOpenNavbar}) {
                 </li>
                 
                 <li className={openList&&!openNavbar?'subNav':'subNavClose'}>
-                    <a href = "/bookingRoom">
+                    <a href = "/bookingTable">
                         <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faCheckSquare} /></i>
-                        <span className="links_name">Đặt phòng</span>
+                        <span className="links_name">Đặt bàn trước</span>
                     </a>
                     <span className="tooltip">Đặt phòng</span>
                 </li>
                 <li className={openList&&!openNavbar?'subNav':'subNavClose'}>
-                    <a href = "/checkoutRoom">
-                        <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faHeartBroken} /></i>
-                        <span className="links_name">Trả phòng</span>
+                    <a href = "/orderFood">
+                        <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faFunnelDollar} /></i>
+                        <span className="links_name">Đặt món ăn</span>
                     </a>
-                    <span className="tooltip">Trả phòng</span>
+                    <span className="tooltip">Đặt món ăn</span> 
                 </li>
                 <li className={openList&&!openNavbar?'subNav':'subNavClose'}>
-                    <a href = "/bookingService">
+                    <a href = "/checkout">
                         <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faFunnelDollar} /></i>
-                        <span className="links_name">Đặt dịch vụ</span>
+                        <span className="links_name">Thanh toán </span>
                     </a>
-                    <span className="tooltip">Đặt dịch vụ</span> 
-                </li>
-                <li className={openList&&!openNavbar?'subNav':'subNavClose'}>
-                    <a href = "/checkoutService">
-                        <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faFunnelDollar} /></i>
-                        <span className="links_name">Thanh toán dịch vụ</span>
-                    </a>
-                    <span className="tooltip">Thanh toán dịch vụ</span> 
+                    <span className="tooltip">Thanh toán</span> 
                 </li>
                 
                 
