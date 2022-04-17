@@ -11,6 +11,7 @@ import Payment from "./components/Payment/Payment";
 import TypeofFood from "./components/TypeofFood/typeOfFood";
 import VoucherList from "./components/Voucher/VoucherList";
 import Gift from "./components/Gift/gift";
+import Auth from "./components/Auth/login";
 function Router() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/checkout" element={<Payment />} />
         <Route path="/voucher" element={<VoucherList />} />
         <Route path="/gift" element={<Gift />} />
+        <Route path="/login" element={<Auth />} />
 
         {/* <Route path="/roomRevenue">
               <div className="container-xl">

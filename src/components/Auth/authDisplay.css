@@ -1,0 +1,18 @@
+
+.auth-display{
+    margin-left: 80%;
+    width: fit-content;
+    margin-right: auto;
+    margin-top: 1%;
+    font-size: 20px;
+    background-color: rgb(205, 166, 85);
+    color: white;
+}
+.login{
+    text-decoration: none;
+    color: black;
+}
+.auth a:hover{
+    text-decoration: none;
+    color: black;
+}
