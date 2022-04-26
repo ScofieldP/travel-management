@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import EmployeeList from "./components/Employee/EmployeeList";
+import FounderList from "./components/founder/founderList";
 import TableList from "./components/Table/TableList";
 import CustomerList from "./components/Customer/CustomerList";
 import FoodList from "./components/Food/FoodList";
@@ -16,7 +16,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<EmployeeList />} />
+        <Route exact path="/" element={<FounderList />} />
         <Route path="/table" element={<TableList />} />
         <Route path="/typeofFood" element={<TypeofFood />} />
         <Route path="/customer" element={<CustomerList />} />

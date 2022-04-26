@@ -1,16 +1,17 @@
 import React, { useContext, useState } from "react";
 import "./login.css";
-//import Axios from "axios";
-//import { useHistory } from "react-router-dom";
-//import UserContext from "../../context/UserContext";
-//import ErrorMessage from "../misc/ErrorMessage";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/userContext";
+import ErrorMessage from "../misc/error-message";
+import { CONNECTION_STRING } from "../../config/index";
 
 const SignIn = () => {
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  //const { getUser } = useContext(UserContext);
-  //const history = useHistory();
+  const { getUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   async function authLogin(e) {
     e.preventDefault();
@@ -20,16 +21,15 @@ const SignIn = () => {
       password: formPassword ? formPassword : undefined,
     };
 
-    // try {
-    //   await Axios.post("http://localhost:5000/staff/login", loginData);
-    // } catch (err) {
-    //   if (err.response && err.response.data.errorMessage)
-    //     setErrorMessage(err.response.data.errorMessage);
-    //   return;
-    // }
-
-    //await getUser();
-    //history.push("/");
+    try {
+      await Axios.post(CONNECTION_STRING + "/founder/login", loginData);
+    } catch (err) {
+      if (err.response && err.response.data.errorMessage)
+        setErrorMessage(err.response.data.errorMessage);
+      return;
+    }
+    await getUser();
+    navigate("/");
   }
 
   return (
@@ -84,6 +84,7 @@ const SignIn = () => {
                     id="signin"
                     value="Đăng nhập"
                   />
+                  {errorMessage && <ErrorMessage message={errorMessage} />}
                 </div>
               </form>
             </div>

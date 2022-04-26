@@ -1,0 +1,14 @@
+.error-message{
+    color: red;
+    display: flex;
+    font-weight: bold;
+    top:80px;
+    margin-left: 15px;
+    margin-top: 40px;
+}
+.error-message button{
+    margin-left: 10px;
+    border: none;
+    background-color: none;
+
+}

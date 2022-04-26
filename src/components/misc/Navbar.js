@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  faUser,
   faGift,
   faBars,
   faAngleDoubleLeft,
@@ -34,6 +35,15 @@ function Navbar({ openNavbar, setOpenNavbar }) {
           </i>
         </div>
         <ul className="nav-list">
+          <li>
+            <a href="/">
+              <i className="bx bx-user">
+                <FontAwesomeIcon icon={faUser} />
+              </i>
+              <span className="links_name">Tài khoản</span>
+            </a>
+            <span className="tooltip">Tài khoản</span>
+          </li>
           <li>
             <a href="/typeofFood">
               <i className="bx bx-user">
