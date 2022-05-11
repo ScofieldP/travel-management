@@ -5,16 +5,19 @@ import "./founder.css";
 function Guest({ guest, editGuest }) {
   return (
     <>
+      <div>
+        
+      </div>
       <tr>
-        <th>Địa chỉ email Chủ nhà hàng</th>
+        <th>Địa chỉ email chủ nhà hàng</th>
         <td>{guest.Fdr_email}</td>
       </tr>
       <tr>
-        <th>Tên Chủ nhà hàng</th>
+        <th>Tên chủ nhà hàng</th>
         <td>{guest.Fdr_fullName}</td>
       </tr>
       <tr>
-        <th>Tên Nhà hàng</th>
+        <th>Tên nhà hàng</th>
         <td>{guest.Restaurants[0].Res_name}</td>
       </tr>
       <tr>

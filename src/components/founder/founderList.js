@@ -56,7 +56,7 @@ const GuestList = () => {
 
   return (
     <>
-      <div className="table-title room-title">
+      <div className="table-title1 room-title">
         <div className="row">
           <div className="col-sm-6">
             <h2>Thông tin Cá nhân và Nhà hàng</h2>
@@ -79,7 +79,7 @@ const GuestList = () => {
       </div>
 
       {user !== null && (
-        <table className="table table-striped table-hover">
+        <table className="table table-striped table-hover bg-white w-75 jcenter">
           {guests.length > 0 ? renderGuests() : <h3>Không có dữ liệu</h3>}
         </table>
       )}
