@@ -8,14 +8,11 @@
 	min-width: 1000px;
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-.table-title {        
-	padding-bottom: 15px;
+.table-title1 {        
 	background: black;
 	color: #fff;
 	padding: 16px 30px;
-	min-width: 100%;
-	margin: -20px -25px 10px;
-	border-radius: 3px 3px 0 0;
+	margin-left:-22px;
 }
 
 .table-title h2 {
@@ -322,4 +319,33 @@ table.table .avatar {
 .employTable table{
 	margin-left: 380px;
 	width: 60%;
+}
+.jcenter{
+	margin-left:150px;
+	margin-right:50px;
+	margin-top: 40px;
+	padding:100px;
+}
+.border-cz{
+	border:none
+}
+.table > :not(:first-child){
+	border:none;
+}
+.employaee-post h2{
+	padding: 20px 40px;
+	background-color: black;
+	color: white;
+	font-size: 20px;
+}
+.employaee-post form{
+	padding: 35px;
+	margin-top:20px;
+}
+.employaee-post{
+	border:1px solid black;
+}
+.btn_rights{
+	position: absolute;
+	right:30px;
 }

@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 import ErrorMessage from "../misc/error-message";
 import { CONNECTION_STRING } from "../../config/index";
-
+import './founder.css'
 function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
   const [founderName, setFounderName] = useState("");
   const [founderEmail, setFounderEmail] = useState("");
@@ -129,7 +129,7 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
   }
 
   return (
-    <div onClick={() => setErrorMessage(null)} className="employee-post">
+    <div onClick={() => setErrorMessage(null)} className="employaee-post">
       <div className="titleModal">
         {!smallNavbar ? (
           <h2>Thông tin Nhà sáng lập</h2>
@@ -137,21 +137,21 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
           <h2>Thông tin Nhà hàng</h2>
         )}
 
-        <button onClick={() => setSmallNavbar(!smallNavbar)}>
-          Chuyển Thông tin
-        </button>
+        <Button onClick={() => setSmallNavbar(!smallNavbar)}className="btn_rights btn-danger border-0 shadow-none">
+          Chuyển thông tin
+        </Button>
       </div>
       <div>
         {!smallNavbar ? (
           <form onSubmit={saveFounder}>
-            <Table borderless>
+            <Table  >
               {errorMessage && <ErrorMessage message={errorMessage} />}
               <tbody>
-                <tr>
-                  <th scope="row">
-                    <label htmlFor="founderName">Họ và Tên Nhà sáng Lập</label>
+                <tr className="border-cz">
+                  <th className="border-cz" scope="row">
+                    <label htmlFor="founderName">Tên chủ nhà hàng </label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="founderName"
@@ -163,10 +163,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
-                    <label htmlFor="founderEmail">Email Nhà sáng lập</label>
+                  <th className="border-cz" scope="row">
+                    <label htmlFor="founderEmail">Email chủ nhà hàng</label>
                   </th>
-                  <td>
+                  <td  >
                     <input
                       className="formInput"
                       id="founderEmail"
@@ -190,14 +190,14 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
           </form>
         ) : (
           <form onSubmit={saveRestaurant}>
-            <Table borderless>
+            <Table className="border-cz">
               {errorMessage && <ErrorMessage message={errorMessage} />}
               <tbody>
-                <tr>
-                  <th scope="row">
+                <tr className="border-cz">
+                  <th className="border-cz"scope="row">
                     <label htmlFor="resName">Tên Nhà hàng</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resName"
@@ -208,11 +208,11 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                     />
                   </td>
                 </tr>
-                <tr>
-                  <th scope="row">
+                <tr >
+                  <th className="border-cz" scope="row">
                     <label htmlFor="resAddress">Địa chỉ nhà hàng</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resAddress"
@@ -224,10 +224,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz" scope="row">
                     <label htmlFor="resPhone">SĐT liên hệ</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resPhone"
@@ -239,10 +239,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz" scope="row">
                     <label htmlFor="resDescription">Miêu tả nhà hàng</label>
                   </th>
-                  <td>
+                  <td className="border-cz" >
                     <input
                       className="formInput"
                       id="resDescription"
@@ -254,10 +254,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz" scope="row">
                     <label htmlFor="resTimeOpen">Thời gian mở cửa</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resTimeOpen"
@@ -269,10 +269,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz" scope="row">
                     <label htmlFor="resTimeClosed">Thời gian đóng cửa</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resTimeClosed"
@@ -284,10 +284,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz"scope="row">
                     <label htmlFor="resEmail">Email nhà hàng</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resEmail"
@@ -299,10 +299,10 @@ function GuestPost({ getGuests, setGuestEditorOpen, editGuestData }) {
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
+                  <th className="border-cz"scope="row">
                     <label htmlFor="resImage">File hình ảnh</label>
                   </th>
-                  <td>
+                  <td className="border-cz">
                     <input
                       className="formInput"
                       id="resImage"
