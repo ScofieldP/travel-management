@@ -8,6 +8,7 @@ import Founder from "./founder";
 import "./founder.css";
 import UserContext from "../../context/userContext";
 import { CONNECTION_STRING } from "../../config/index";
+import { Table } from "react-bootstrap";
 
 const GuestList = () => {
   const [guests, setGuests] = useState([]);
@@ -79,9 +80,10 @@ const GuestList = () => {
       </div>
 
       {user !== null && (
-        <table className="table table-striped table-hover bg-white w-75 jcenter">
+         <Table className="w-75 bg-white jcenter ">
+
           {guests.length > 0 ? renderGuests() : <h3>Không có dữ liệu</h3>}
-        </table>
+        </Table>
       )}
       {user === null && <h2>Hãy đăng nhập để thao tác trên hệ thống</h2>}
     </>

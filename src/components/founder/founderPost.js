@@ -50,12 +50,12 @@ function GuestPost({ getGuests, setGuestCreateOpen }) {
   }
 
   return (
-    <div onClick={() => setErrorMessage(null)} className="employee-post">
+    <div onClick={() => setErrorMessage(null)} className="employaee-post">
       <div className="titleModal">
         <h2>Thêm khách hàng </h2>
       </div>
       <form onSubmit={saveRoom}>
-        <Table borderless>
+        <Table >
           {errorMessage && <ErrorMessage message={errorMessage} />}
           <tbody>
             <tr>
