@@ -30,7 +30,6 @@ const GuestList = () => {
 
   function renderGuests() {
     let guestData = [...guests];
-    console.log(guestData[0]);
     return guestData.map((guest, i) => {
       return <Founder key={i} guest={guest} editGuest={editGuest} />;
     });
@@ -80,8 +79,7 @@ const GuestList = () => {
       </div>
 
       {user !== null && (
-         <Table className="w-75 bg-white jcenter ">
-
+        <Table className="w-75 bg-white jcenter ">
           {guests.length > 0 ? renderGuests() : <h3>Không có dữ liệu</h3>}
         </Table>
       )}
