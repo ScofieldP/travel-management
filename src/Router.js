@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import FounderList from "./components/founder/founderList";
+import FounderList from "./components/founder/listFounder";
 import TableList from "./components/Table/TableList";
 import CustomerList from "./components/Customer/CustomerList";
 import FoodList from "./components/Food/FoodList";
