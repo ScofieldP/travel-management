@@ -8,7 +8,7 @@ import FoodList from "./components/Food/FoodList";
 import BookingList from "./components/BookingTable/BookingList";
 import OrderList from "./components/OrderFood/OrderList";
 import Payment from "./components/Payment/Payment";
-//import TypeofFood from "./components/TypeofFood/typeOfFood";
+//import TypeofFood from "./components/TypeofFood/listTypeofFood";
 import VoucherList from "./components/Voucher/VoucherList";
 import Gift from "./components/Gift/gift";
 import Auth from "./components/Auth/login";
@@ -18,7 +18,7 @@ function Router() {
       <Routes>
         <Route exact path="/" element={<FounderList />} />
         <Route path="/table" element={<TableList />} />
-        {/* <Route path="/typeofFood" element={<TypeofFood />} /> */}
+        <Route path="/typeofFood" element={<h1>Đây là Loại thức ăn</h1>} />
         <Route path="/customer" element={<CustomerList />} />
         <Route path="/food" element={<FoodList />} />
         <Route path="/bookingTable" element={<BookingList />} />
