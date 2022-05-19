@@ -75,12 +75,12 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
   }
 
   return (
-    <div onClick={() => setErrorMessage(null)} className="employee-post">
+    <div onClick={() => setErrorMessage(null)} className="employaee-post">
       <div className="titleModal">
         <h2>Cập nhập thông tin nhà hàng</h2>
       </div>
-      <form onSubmit={saveRestaurant}>
-        <Table borderless>
+      <form onSubmit={saveRestaurant}border border-dark>
+        <Table borderless >
           {errorMessage && <ErrorMessage message={errorMessage} />}
           <tbody>
             <tr>
