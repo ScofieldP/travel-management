@@ -9,7 +9,7 @@ import PutFounder from "./putFounder";
 import UserContext from "../../context/userContext";
 import { CONNECTION_STRING } from "../../config/index";
 import { Table } from "react-bootstrap";
-
+import './founder.css'
 const ListFounder = () => {
   const [dataAPI, setDataAPI] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
@@ -71,7 +71,7 @@ const ListFounder = () => {
         </>
       ) : (
         <>
-          <div className="table-title room-title">
+          <div className="table-title1 room-title">
             <div className="row">
               <div className="col-sm-6">
                 <h2>Quản lý Thông tin</h2>
@@ -112,53 +112,85 @@ const ListFounder = () => {
                     resEditorData={resEditorData}
                   />
                 </Modal>
-                <Modal
-                  isOpen={founderEditorOpen && user}
-                  style={customStyles}
-                  onRequestClose={!founderEditorOpen}
-                  contentLabel="Example Modal"
-                >
-                  <PutFounder
-                    setFounderEditorOpen={setFounderEditorOpen}
-                    GetDataAPI={GetDataAPI}
-                    dataAPI={dataAPI}
-                  />
-                </Modal>
+               
               </div>
             </div>
           </div>
           <div>
-            <label>Thông tin Nhà sáng lập</label>
             {dataAPI.length > 0 ? (
               <>
-                <Table className="table table-striped table-hover">
+                <div className="container-xl">
+                  <div className="table-responsive">
+                    <div className="table-wrapper">
+                    <div className="table-title">
+                      <div className="row">
+                      <div className="col-sm-6">
+                        <h2>Quản lý món ăn</h2>
+                      </div>
+                      <div className="col-sm-6">
+                        <a
+                        href="#addEmployeeModal"
+                        className="btn btn-success"
+                        data-toggle="modal"
+                        onClick={() => setFounderEditorOpen(true)}
+                      >
+                        <i className="material-icons">&#xE147;</i>
+                        <span>Cập nhập thông tin Nhà sáng lập</span>
+                      </a>
+                      <Modal
+                      isOpen={founderEditorOpen && user}
+                      style={customStyles}
+                      onRequestClose={!founderEditorOpen}
+                      contentLabel="Example Modal"
+                      >
+                      <PutFounder
+                        setFounderEditorOpen={setFounderEditorOpen}
+                        GetDataAPI={GetDataAPI}
+                        dataAPI={dataAPI}
+                      />
+                    </Modal>
+                      </div>
+                      </div>
+                    </div>
+                    <table className="table table-striped table-hover bg-white w-75 jcenter">
+                  
+                  <thead>
                   <tr>
-                    <th>Tên nhà sáng lập</th>
-                    <th>{dataAPI[0].Fdr_fullName}</th>
+                    <th className="csa">Tên nhà sáng lập</th>
+                    <th className="csa">Địa chỉ mail</th>
                   </tr>
                   <tr>
-                    <th>Địa chỉ mail</th>
-                    <td>{dataAPI[0].Fdr_email}</td>
+                  <td className="csa">{dataAPI[0].Fdr_fullName}</td>
+                    <td className="csa">{dataAPI[0].Fdr_email}</td>
                   </tr>
-                </Table>
-                <a
-                  href="#addEmployeeModal"
-                  className="btn btn-success"
-                  data-toggle="modal"
-                  onClick={() => setFounderEditorOpen(true)}
-                >
-                  <i className="material-icons">&#xE147;</i>
-                  <span>Cập nhập thông tin Nhà sáng lập</span>
-                </a>
+                  </thead>
+                 
+                </table>
+                
+                    </div>
+                   
+                  </div>
+                </div>                {/* container */}
+
               </>
             ) : (
               <h3>Không tìm thấy dữ liệu</h3>
             )}
           </div>
+
           <div>
-            <label>Thông tin Nhà hàng nhà sáng lập sở hữu</label>
-            {restaurant.length > 0 ? (
-              <Table className="table table-striped table-hover">
+            <div className="container-xl">
+              <div className="table-responsive">
+                <div className="table-wrapper">
+                  <div className="table-title">
+                    <div className="row">
+                    <div className="col-sm-6">
+                        <h2>Thông tin Nhà hàng nhà sáng lập sở hữu</h2>
+                    </div>
+                    </div>
+                  </div>
+                  {restaurant.length > 0 ? (
+              <table className="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>Tên nhà hàng</th>
@@ -172,10 +204,15 @@ const ListFounder = () => {
                   </tr>
                 </thead>
                 <tbody>{RenderRestaurant()}</tbody>
-              </Table>
+              </table>
             ) : (
               <h3>Không tìm thấy dữ liệu</h3>
             )}
+                </div>
+              </div>
+            </div>
+          
+           
           </div>
         </>
       )}

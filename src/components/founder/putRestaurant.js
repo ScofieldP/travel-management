@@ -89,7 +89,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="name"
                   type="text"
                   value={name}
@@ -103,7 +103,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="address"
                   type="text"
                   value={address}
@@ -117,7 +117,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="description"
                   type="text"
                   value={description}
@@ -131,7 +131,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="email"
                   type="email"
                   value={email}
@@ -145,7 +145,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="phone"
                   type="text"
                   value={phone}
@@ -159,7 +159,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="timeOpen"
                   type="time"
                   value={timeOpen}
@@ -173,7 +173,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="timeClose"
                   type="time"
                   value={timeClose}
