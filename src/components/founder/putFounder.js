@@ -59,7 +59,7 @@ function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="name"
                   type="text"
                   value={name}
@@ -73,7 +73,7 @@ function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="email"
                   type="email"
                   value={email}

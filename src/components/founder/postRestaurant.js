@@ -54,7 +54,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
   }
 
   return (
-    <div onClick={() => setErrorMessage(null)} className="employee-post">
+    <div onClick={() => setErrorMessage(null)} className="employaee-post">
       <div className="titleModal">
         <h2>Khởi tạo nhà hàng</h2>
       </div>
@@ -68,7 +68,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="name"
                   type="text"
                   value={name}
@@ -82,7 +82,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="address"
                   type="text"
                   value={address}
@@ -96,7 +96,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="description"
                   type="text"
                   value={description}
@@ -110,7 +110,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="email"
                   type="email"
                   value={email}
@@ -124,7 +124,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="phone"
                   type="text"
                   value={phone}
@@ -138,7 +138,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="timeOpen"
                   type="time"
                   value={timeOpen}
@@ -152,7 +152,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
               </th>
               <td>
                 <input
-                  className="formInput"
+                  className="formInput1"
                   id="timeClose"
                   type="time"
                   value={timeClose}
