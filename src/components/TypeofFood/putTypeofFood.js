@@ -13,7 +13,7 @@ function UpdateTypeOffood({ toFEditorData, GetDataAPI, setToFEditorOpen }) {
   useEffect(() => {
     if (toFEditorData) {
       setName(toFEditorData.ToF_name ? toFEditorData.ToF_name : "");
-      setState(toFEditorData.ToF_state ? "Đang bán" : "Tạm dừng bán");
+      setState(toFEditorData.ToF_state ? "Đang phục vụ" : "Tạm dừng phục vụ");
     }
   }, [toFEditorData]);
 
@@ -84,13 +84,6 @@ function UpdateTypeOffood({ toFEditorData, GetDataAPI, setToFEditorOpen }) {
                   <option value="true">Đang bán</option>
                   <option value="false">Tạm dừng bán</option>
                 </select>
-                {/* <input
-                  className="formInput1"
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                /> */}
               </td>
             </tr>
           </tbody>

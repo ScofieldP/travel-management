@@ -40,7 +40,6 @@ const ListTypeOfFood = () => {
       );
       setDataAPI(toFRes.data);
     }
-    console.log(dataAPI);
   }
 
   function RenderToF() {
