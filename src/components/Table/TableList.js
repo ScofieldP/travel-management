@@ -1,164 +1,165 @@
-import React from 'react';
-import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import React, { useContext, useEffect, useState } from "react";
+import Axios from "axios";
+import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
 
-const customStyles = {
-	content: {
-	  top: '50%',
-	  left: '50%',
-	  right: 'auto',
-	  bottom: 'auto',	
-	  overflow: 'auto',
-	  transform: 'translate(-50%, -50%)',
-	  padding: '0px',
-	  border: '0',
-	},
-  };
+import Createtable from "./postTable";
+import EditTable from "./putTable";
+import UserContext from "../../context/userContext";
+import TableItem from "./TableItem";
+import { CONNECTION_STRING } from "../../config/index";
+
 const TableList = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-	function openModal() {
-		setIsOpen(true);
-	}
-	function closeModal() {
-		setIsOpen(false);
-	}
-    return (
+  const [dataAPI, setDataAPI] = useState([]);
+  const [tblCreateOpen, setTblCreateOpen] = useState(false);
+  const [tblEditorOpen, setTblEditorOpen] = useState(false);
+  const [tblEditorData, setTblEditorData] = useState(false);
+  const [resID, setResID] = useState(null);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) setDataAPI([]);
+    else GetDataAPI();
+  }, [user]);
+
+  async function GetDataAPI() {
+    const getResID = !localStorage.res ? "" : JSON.parse(localStorage.res);
+    if (getResID === null) {
+      if (
+        window.confirm(
+          "Hãy chọn nhà hàng bạn muốn xem Bàn tại Mục tài khoản!!!"
+        )
+      ) {
+        navigate("/");
+      }
+    } else {
+      setResID(getResID.Res_id);
+      const toFRes = await Axios.get(
+        CONNECTION_STRING + `/table/${getResID.Res_id}`
+      );
+      setDataAPI(toFRes.data);
+    }
+  }
+  function RenderTable() {
+    let tblData = [...dataAPI];
+    return tblData.map((tbl, i) => {
+      return (
+        <TableItem
+          key={i}
+          tbl={tbl}
+          EditTbl={EditTbl}
+          GetDataAPI={GetDataAPI}
+        />
+      );
+    });
+  }
+
+  function EditTbl(resData) {
+    setTblEditorData(resData);
+    setTblEditorOpen(true);
+  }
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      padding: "0",
+      border: "0",
+      width: "auto",
+    },
+  };
+  return (
+    <>
+      {user === undefined ? (
         <>
-        <div className="container-xl">
-                <div className="table-responsive">
-                  <div className="table-wrapper">
+          <h2>Hãy đăng nhập để thao tác trên hệ thống</h2>
+        </>
+      ) : (
+        <>
+          <div className="table-title1 room-title">
+            <div className="row">
+              <div className="col-sm-6">
+                <h2>Quản lý Thông tin</h2>
+              </div>
+              <div className="col-sm-6">
+                {!tblCreateOpen && (
+                  <a
+                    href="#addEmployeeModal"
+                    className="btn btn-success"
+                    data-toggle="modal"
+                    onClick={() => setTblCreateOpen(true)}
+                  >
+                    <i className="material-icons">&#xE147;</i>
+                    <span>Thêm Bàn</span>
+                  </a>
+                )}
+                <Modal
+                  isOpen={tblCreateOpen && user}
+                  style={customStyles}
+                  onRequestClose={!tblCreateOpen}
+                  contentLabel="Example Modal"
+                >
+                  <Createtable
+                    setTblCreateOpen={setTblCreateOpen}
+                    GetDataAPI={GetDataAPI}
+                    resID={resID}
+                  />
+                </Modal>
+
+                <Modal
+                  isOpen={tblEditorOpen && user}
+                  style={customStyles}
+                  onRequestClose={!tblEditorOpen}
+                  contentLabel="Example Modal"
+                >
+                  <EditTable
+                    setTblEditorOpen={setTblEditorOpen}
+                    GetDataAPI={GetDataAPI}
+                    tblEditorData={tblEditorData}
+                  />
+                </Modal>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="container-xl">
+              <div className="table-responsive">
+                <div className="table-wrapper">
                   <div className="table-title">
-				<div className="row">
-					<div className="col-sm-6">
-						<h2>Quản lý bàn ăn</h2>
-					</div>
-          <div className="col-sm-6">
-					<a href="##"
-								className="btn btn-primary"
-								data-toggle="modal"
-								onClick={openModal}
-								>
-								<span ><FontAwesomeIcon className="me-2" icon={ faCirclePlus} />Thêm nhân viên</span>
-							</a>
-    				    <Modal
-							isOpen={modalIsOpen}
-							onRequestClose={closeModal}
-							style={customStyles}
-							contentLabel="Example Modal">
-							
-							<div className="headerModal d-flex justify-content-between">
-								<p className="text-white px-5">Thêm nhân viên</p>
-                                <span className="text-white px-5" onClick={closeModal}>X</span>
-							</div>
-							<div className="option_change">
-								<table className="table  ">
-								<thead className="border border-white"> 
-								<tbody>
-                            <tr>
-                                <th scope="row">
-                                    <label htmlFor ='editor-name'>Họ và Tên</label>         
-                                </th>
-                            <td>
-                                <input className='formInput' id = 'editor-name' 
-                                type = 'text' />
-                            </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <label htmlFor ='editor-phoneNumber'>SĐT</label>
-                                </th>
-                            <td>
-                                <input className='formInput' id = 'editor-phoneNumber' 
-                                type = 'text' />
-                            </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <label htmlFor ='editor-nameOfRoom'>Email</label>                   
-                                </th>
-                            <td>
-                                <input className='formInput'id = 'editor-nameOfRoom' 
-                                type = 'text' />
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <label htmlFor ='editor-role'>Vai trò</label>
-                            </th>
-                            <td>
-                            <input className='formInput' id = 'editor-role' 
-                            type = 'text' />
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <label htmlFor ='editor-nameOfRoom'>Phòng Ban</label>                   
-                            </th>
-                            <td>
-                            <input className='formInput' id = 'editor-nameOfRoom' 
-                            type = 'text' />
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <label htmlFor ='editor-salary'>Lương</label>
-                            </th>
-                            <td>
-                            <input className='formInput' id = 'editor-salary' 
-                            type = 'number' 
-                            />
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <label htmlFor ='editor-password'>Mật Khẩu</label>
-                            </th>
-                            <td>
-                                <input className='formInput' id = 'editor-password' 
-                                type = 'password' 
-                            />
-                            </td>
-                            </tr>
-                            <tr>
-                            <th scope="row">
-                                <label htmlFor ='editor-passwordVery'>Xác Thực Mật Khẩu</label>
-                            </th>
-                            <td>
-                                <input className='formInput' id = 'editor-passwordVery' 
-                                type = 'password'
-                            />
-                            </td>
-                        </tr>
-                    </tbody>
-			</thead>
-								</table>
-							</div>	
-							</Modal>
-					</div>
-				</div>
-		</div>
-			<table className="table table-striped table-hover">
-				<thead>
-					<tr>
-                    <th>Tầng</th>
-                    <th>Số bàn</th>
-                    <th>Giá Phòng</th>
-                    <th>Loại bàn</th>
-                    <th>Tình trạng bàn</th>
-                    <th>Ghi chú</th>
-                    <th>ThaoTác</th>
-					</tr>
-				</thead>
-				
-			</table>
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <h2>Thông tin Bàn ăn</h2>
+                      </div>
+                    </div>
                   </div>
+                  {dataAPI.length > 0 ? (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Tên bàn</th>
+                          <th>Tình trạng bàn</th>
+                          <th>Tiền cọc bàn</th>
+                          <th>Số ghế</th>
+                          <th>ThaoTác</th>
+                        </tr>
+                      </thead>
+                      <tbody>{RenderTable()}</tbody>
+                    </table>
+                  ) : (
+                    <h3>Không tìm thấy dữ liệu</h3>
+                  )}
                 </div>
               </div>
-        
-	
+            </div>
+          </div>
         </>
-    );
-}
+      )}
+    </>
+  );
+};
 
 export default TableList;
