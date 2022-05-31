@@ -15,7 +15,10 @@ function UserContextProvider(props) {
   const [userId, setUserId] = useState(undefined);
 
   async function getUser() {
-    const userRes = await Axios.get(CONNECTION_STRING + "/founder/loggedIn");
+    const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+    const userRes = await Axios.get(
+      CONNECTION_STRING + `/founder/loggedIn/${token.data.token}`
+    );
     setUser(userRes.data ? userRes.data.Fdr_fullName : null);
     setUserPhone(userRes.data ? userRes.data.phoneNumber : null);
     setUserEmail(userRes.data ? userRes.data.Fdr_email : null);

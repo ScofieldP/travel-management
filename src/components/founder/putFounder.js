@@ -26,7 +26,11 @@ function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
     };
 
     try {
-      await Axios.put(CONNECTION_STRING + `/founder`, resData);
+      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+      await Axios.put(
+        CONNECTION_STRING + `/founder/${token.data.token}`,
+        resData
+      );
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

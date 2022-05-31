@@ -22,7 +22,11 @@ const SignIn = () => {
     };
 
     try {
-      await Axios.post(CONNECTION_STRING + "/founder/login", loginData);
+      const token = await Axios.post(
+        CONNECTION_STRING + "/founder/login",
+        loginData
+      );
+      localStorage.setItem("token", JSON.stringify(token));
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

@@ -48,8 +48,10 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
     };
 
     try {
+      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
       await Axios.put(
-        CONNECTION_STRING + `/restaurant/${resEditorData.Res_id}`,
+        CONNECTION_STRING +
+          `/restaurant/${resEditorData.Res_id}/${token.data.token}`,
         resData
       );
     } catch (err) {
@@ -79,8 +81,8 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
       <div className="titleModal">
         <h2>Cập nhập thông tin nhà hàng</h2>
       </div>
-      <form onSubmit={saveRestaurant}border border-dark>
-        <Table borderless >
+      <form onSubmit={saveRestaurant} border border-dark>
+        <Table borderless>
           {errorMessage && <ErrorMessage message={errorMessage} />}
           <tbody>
             <tr>

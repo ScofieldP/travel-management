@@ -5,7 +5,10 @@ import { CONNECTION_STRING } from "../../config/index";
 function Restaurant({ res, EditRes, GetDataAPI }) {
   async function DeleteRestaurant() {
     if (window.confirm(`Bạn có chắc muốn xóa dữ liệu của ${res.Res_name}?`)) {
-      await Axios.delete(CONNECTION_STRING + `/restaurant/${res.Res_id}`);
+      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+      await Axios.delete(
+        CONNECTION_STRING + `/restaurant/${res.Res_id}/${token.data.token}`
+      );
       GetDataAPI();
     }
   }

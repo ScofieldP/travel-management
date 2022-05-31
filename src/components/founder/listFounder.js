@@ -24,7 +24,11 @@ const ListFounder = () => {
   }, [user]);
 
   async function GetDataAPI() {
-    const guestRes = await Axios.get(CONNECTION_STRING + "/founder/byID/");
+    const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+    const guestRes = await Axios.get(
+      CONNECTION_STRING + `/founder/byID/${token.data.token}`
+    );
+    console.log(guestRes.data);
     setDataAPI(guestRes.data);
     setRestaurant(guestRes.data[0].Restaurants);
   }
@@ -73,7 +77,7 @@ const ListFounder = () => {
           <div className="table-title1 room-title">
             <div className="row">
               <div className="col-sm-6">
-                <h2>Quản lý Thông tin</h2>
+                <h2>Điều hành hệ thống</h2>
               </div>
               <div className="col-sm-6">
                 {!resCreateOpen && (
@@ -123,7 +127,7 @@ const ListFounder = () => {
                       <div className="table-title">
                         <div className="row">
                           <div className="col-sm-6">
-                            <h2>Quản lý món ăn</h2>
+                            <h2>Thông tin nhà sáng lập</h2>
                           </div>
                           <div className="col-sm-6">
                             <a
