@@ -15,6 +15,7 @@ import {
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { URL_GIFT, URL_VOUCHER } from "../../config";
 import "./navbar.css";
 
 function Navbar({ openNavbar, setOpenNavbar }) {
@@ -84,7 +85,7 @@ function Navbar({ openNavbar, setOpenNavbar }) {
           </li>
 
           <li className={openList && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href="/voucher">
+            <a href={URL_VOUCHER} target="_blank">
               <i className="bx bx-grid-alt">
                 <FontAwesomeIcon icon={faCheckSquare} />
               </i>
@@ -93,7 +94,7 @@ function Navbar({ openNavbar, setOpenNavbar }) {
             <span className="tooltip">Voucher</span>
           </li>
           <li className={openList && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href="/gift">
+            <a href={URL_GIFT} target="_blank">
               <i className="bx bx-grid-alt">
                 <FontAwesomeIcon icon={faGift} />
               </i>
@@ -101,16 +102,6 @@ function Navbar({ openNavbar, setOpenNavbar }) {
             </a>
             <span className="tooltip">Gift</span>
           </li>
-          <li className={openList && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href="/checkout">
-              <i className="bx bx-grid-alt">
-                <FontAwesomeIcon icon={faCrown} />
-              </i>
-              <span className="links_name">Stripe/Paypal</span>
-            </a>
-            <span className="tooltip">Stripe/Paypal</span>
-          </li>
-
           {/* list menu */}
           <li onClick={() => setOpenListNav(!openListNav)}>
             <a href="#baocao">

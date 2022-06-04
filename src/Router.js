@@ -9,8 +9,6 @@ import BookingList from "./components/BookingTable/BookingList";
 import OrderList from "./components/OrderFood/OrderList";
 import Payment from "./components/Payment/Payment";
 import TypeofFood from "./components/TypeofFood/typeofFoodList";
-import VoucherList from "./components/Voucher/VoucherList";
-import Gift from "./components/Gift/gift";
 import Auth from "./components/Auth/login";
 function Router() {
   return (
@@ -24,8 +22,6 @@ function Router() {
         <Route path="/bookingTable" element={<BookingList />} />
         <Route path="/orderFood" element={<OrderList />} />
         <Route path="/checkout" element={<Payment />} />
-        <Route path="/voucher" element={<VoucherList />} />
-        <Route path="/gift" element={<Gift />} />
         <Route path="/login" element={<Auth />} />
 
         {/* <Route path="/roomRevenue">

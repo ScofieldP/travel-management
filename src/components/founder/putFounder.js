@@ -59,7 +59,7 @@ function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
           <tbody>
             <tr>
               <th scope="row">
-                <label htmlFor="name">Tên nhà hàng</label>
+                <label htmlFor="name">Tên nhà sáng lập</label>
               </th>
               <td>
                 <input
