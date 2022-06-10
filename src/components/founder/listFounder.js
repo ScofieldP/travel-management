@@ -28,7 +28,7 @@ const ListFounder = () => {
     const guestRes = await Axios.get(
       CONNECTION_STRING + `/founder/byID/${token.data.token}`
     );
-    console.log(guestRes.data);
+
     setDataAPI(guestRes.data);
     setRestaurant(guestRes.data[0].Restaurants);
   }
