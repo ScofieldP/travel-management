@@ -7,7 +7,7 @@ import PostRestaurant from "./postRestaurant";
 import PutRestaurant from "./putRestaurant";
 import PutFounder from "./putFounder";
 import UserContext from "../../context/userContext";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 import "./founder.css";
 const ListFounder = () => {
   const [dataAPI, setDataAPI] = useState([]);
@@ -17,7 +17,7 @@ const ListFounder = () => {
   const [founderEditorOpen, setFounderEditorOpen] = useState(false);
   const [resEditorData, setResEditorData] = useState(null);
   const { user } = useContext(UserContext);
-
+  console.log(domain);
   useEffect(() => {
     if (!user) setDataAPI([]);
     else GetDataAPI();
@@ -26,7 +26,7 @@ const ListFounder = () => {
   async function GetDataAPI() {
     const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
     const guestRes = await Axios.get(
-      CONNECTION_STRING + `/founder/byID/${token.data.token}`
+      domain + `/founder/byID/${token.data.token}`
     );
 
     setDataAPI(guestRes.data);

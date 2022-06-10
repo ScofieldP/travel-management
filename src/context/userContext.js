@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import Axios from "axios";
 
-import { CONNECTION_STRING } from "../config";
+import domain from "../util/domain";
 const UserContext = createContext();
 
 function UserContextProvider(props) {
@@ -17,7 +17,7 @@ function UserContextProvider(props) {
   async function getUser() {
     const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
     const userRes = await Axios.get(
-      CONNECTION_STRING + `/founder/loggedIn/${token.data.token}`
+      domain + `/founder/loggedIn/${token.data.token}`
     );
     setUser(userRes.data ? userRes.data.Fdr_fullName : null);
     setUserPhone(userRes.data ? userRes.data.phoneNumber : null);

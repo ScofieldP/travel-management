@@ -1,13 +1,13 @@
 import React from "react";
 import Axios from "axios";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function Restaurant({ res, EditRes, GetDataAPI }) {
   async function DeleteRestaurant() {
     if (window.confirm(`Bạn có chắc muốn xóa dữ liệu của ${res.Res_name}?`)) {
       const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
       await Axios.delete(
-        CONNECTION_STRING + `/restaurant/${res.Res_id}/${token.data.token}`
+        domain + `/restaurant/${res.Res_id}/${token.data.token}`
       );
       GetDataAPI();
     }

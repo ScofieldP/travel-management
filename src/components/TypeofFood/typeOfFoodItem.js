@@ -1,11 +1,11 @@
 import React from "react";
 import Axios from "axios";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function TypeOfFood({ tof, EditTof, GetDataAPI }) {
   async function DeleteTypeofFood() {
     if (window.confirm(`Bạn có chắc muốn xóa ${tof.ToF_name}?`)) {
-      await Axios.delete(CONNECTION_STRING + `/typeofFood/${tof.ToF_id}`);
+      await Axios.delete(domain + `/typeofFood/${tof.ToF_id}`);
       GetDataAPI();
     }
   }

@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
   const [name, setName] = useState("");
@@ -27,10 +27,7 @@ function PutFounder({ dataAPI, GetDataAPI, setFounderEditorOpen }) {
 
     try {
       const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
-      await Axios.put(
-        CONNECTION_STRING + `/founder/${token.data.token}`,
-        resData
-      );
+      await Axios.put(domain + `/founder/${token.data.token}`, resData);
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

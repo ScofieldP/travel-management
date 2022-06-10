@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function EditTable({ tblEditorData, GetDataAPI, setTblEditorOpen }) {
   const [name, setName] = useState("");
@@ -32,10 +32,7 @@ function EditTable({ tblEditorData, GetDataAPI, setTblEditorOpen }) {
     };
 
     try {
-      await Axios.put(
-        CONNECTION_STRING + `/table/${tblEditorData.Tbl_id}`,
-        tblData
-      );
+      await Axios.put(domain + `/table/${tblEditorData.Tbl_id}`, tblData);
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

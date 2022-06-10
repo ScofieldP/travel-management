@@ -1,11 +1,11 @@
 import React from "react";
 import Axios from "axios";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function TableItem({ tbl, EditTbl, GetDataAPI }) {
   async function DeleteTable() {
     if (window.confirm(`Bạn có chắc muốn xóa ${tbl.Tbl_name}?`)) {
-      await Axios.delete(CONNECTION_STRING + `/table/${tbl.Tbl_id}`);
+      await Axios.delete(domain + `/table/${tbl.Tbl_id}`);
       GetDataAPI();
     }
   }

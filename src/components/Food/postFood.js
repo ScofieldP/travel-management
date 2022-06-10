@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function CreatTypeofFood({ toFID, GetDataAPI, setFoodCreateOpen }) {
   const [name, setName] = useState("");
@@ -27,7 +27,7 @@ function CreatTypeofFood({ toFID, GetDataAPI, setFoodCreateOpen }) {
     };
 
     try {
-      await Axios.post(CONNECTION_STRING + `/food/${toFID}`, foodData);
+      await Axios.post(domain + `/food/${toFID}`, foodData);
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

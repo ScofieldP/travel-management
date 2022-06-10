@@ -7,7 +7,7 @@ import Createtable from "./postTable";
 import EditTable from "./putTable";
 import UserContext from "../../context/userContext";
 import TableItem from "./TableItem";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 const TableList = () => {
   const [dataAPI, setDataAPI] = useState([]);
@@ -35,9 +35,7 @@ const TableList = () => {
       }
     } else {
       setResID(getResID.Res_id);
-      const toFRes = await Axios.get(
-        CONNECTION_STRING + `/table/${getResID.Res_id}`
-      );
+      const toFRes = await Axios.get(domain + `/table/${getResID.Res_id}`);
       setDataAPI(toFRes.data);
     }
   }

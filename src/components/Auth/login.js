@@ -4,8 +4,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
-
+import domain from "../../util/domain";
 const SignIn = () => {
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
@@ -22,10 +21,7 @@ const SignIn = () => {
     };
 
     try {
-      const token = await Axios.post(
-        CONNECTION_STRING + "/founder/login",
-        loginData
-      );
+      const token = await Axios.post(domain + "/founder/login", loginData);
       localStorage.setItem("token", JSON.stringify(token));
     } catch (err) {
       if (err.response && err.response.data.errorMessage)

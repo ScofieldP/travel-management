@@ -7,7 +7,7 @@ import UserContext from "../../context/userContext";
 import TypeOfFoodItem from "./typeOfFoodItem";
 import PostTypeOfFood from "./postTypeofFood";
 import PutTypeOfFood from "./putTypeofFood";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 const ListTypeOfFood = () => {
   const [dataAPI, setDataAPI] = useState([]);
@@ -35,9 +35,7 @@ const ListTypeOfFood = () => {
       }
     } else {
       setResID(getResID.Res_id);
-      const toFRes = await Axios.get(
-        CONNECTION_STRING + `/typeofFood/${getResID.Res_id}`
-      );
+      const toFRes = await Axios.get(domain + `/typeofFood/${getResID.Res_id}`);
       setDataAPI(toFRes.data);
     }
   }

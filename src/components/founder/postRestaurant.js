@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
   const [name, setName] = useState("");
@@ -31,10 +31,7 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
 
     try {
       const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
-      await Axios.post(
-        CONNECTION_STRING + `/restaurant/${token.data.token}`,
-        resData
-      );
+      await Axios.post(domain + `/restaurant/${token.data.token}`, resData);
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

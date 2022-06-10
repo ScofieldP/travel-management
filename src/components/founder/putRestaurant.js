@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import { CONNECTION_STRING } from "../../config/index";
+import domain from "../../util/domain";
 
 function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
   const [name, setName] = useState("");
@@ -50,8 +50,7 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
     try {
       const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
       await Axios.put(
-        CONNECTION_STRING +
-          `/restaurant/${resEditorData.Res_id}/${token.data.token}`,
+        domain + `/restaurant/${resEditorData.Res_id}/${token.data.token}`,
         resData
       );
     } catch (err) {
