@@ -7,7 +7,7 @@ import UserContext from "../../context/userContext";
 import TypeOfFoodItem from "./typeOfFoodItem";
 import PostTypeOfFood from "./postTypeofFood";
 import PutTypeOfFood from "./putTypeofFood";
-import domain from "../../util/domain";
+import domain from "../../until/domain";
 
 const ListTypeOfFood = () => {
   const [dataAPI, setDataAPI] = useState([]);

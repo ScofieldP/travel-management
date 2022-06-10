@@ -7,7 +7,7 @@ import PostRestaurant from "./postRestaurant";
 import PutRestaurant from "./putRestaurant";
 import PutFounder from "./putFounder";
 import UserContext from "../../context/userContext";
-import domain from "../../util/domain";
+import domain from "../../until/domain";
 import "./founder.css";
 const ListFounder = () => {
   const [dataAPI, setDataAPI] = useState([]);

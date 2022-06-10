@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Table, Button } from "reactstrap";
 
 import ErrorMessage from "../misc/error-message";
-import domain from "../../util/domain";
+import domain from "../../until/domain";
 
 function Createtable({ resID, GetDataAPI, setTblCreateOpen }) {
   const [name, setName] = useState("");

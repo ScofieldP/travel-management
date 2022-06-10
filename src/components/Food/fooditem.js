@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import domain from "../../util/domain";
+import domain from "../../until/domain";
 
 function TypeOfFood({ food, EditFood, GetDataAPI }) {
   async function DeleteTypeofFood() {

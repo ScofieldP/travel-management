@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import Axios from "axios";
 
-import domain from "../util/domain";
+import domain from "../until/domain";
 const UserContext = createContext();
 
 function UserContextProvider(props) {
