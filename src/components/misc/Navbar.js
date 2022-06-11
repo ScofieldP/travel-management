@@ -4,7 +4,6 @@ import {
   faGift,
   faBars,
   faAngleDoubleLeft,
-  faCrown,
   faFilter,
   faCheckSquare,
   faPoll,
@@ -15,7 +14,6 @@ import {
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { URL_GIFT, URL_VOUCHER } from "../../config";
 import "./navbar.css";
 
 function Navbar({ openNavbar, setOpenNavbar }) {
@@ -85,7 +83,11 @@ function Navbar({ openNavbar, setOpenNavbar }) {
           </li>
 
           <li className={openList && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href={URL_VOUCHER} target="_blank">
+            <a
+              href="http://voucher.votuan.xyz/partner/voucher"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="bx bx-grid-alt">
                 <FontAwesomeIcon icon={faCheckSquare} />
               </i>
@@ -94,7 +96,11 @@ function Navbar({ openNavbar, setOpenNavbar }) {
             <span className="tooltip">Voucher</span>
           </li>
           <li className={openList && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href={URL_GIFT} target="_blank">
+            <a
+              href="http://voucher.votuan.xyz/partner/create-gift-partner"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="bx bx-grid-alt">
                 <FontAwesomeIcon icon={faGift} />
               </i>
