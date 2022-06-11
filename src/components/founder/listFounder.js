@@ -70,7 +70,7 @@ const ListFounder = () => {
     <>
       {user === undefined ? (
         <>
-          <h2>Hãy đăng nhập để thao tác trên hệ thống</h2>
+          <a href="/login">Hãy đăng nhập để thao tác trên hệ thống</a>
         </>
       ) : (
         <>
