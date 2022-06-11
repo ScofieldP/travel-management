@@ -137,7 +137,7 @@ const CustomerList = () => {
 							</Modal>
 					</div>
 				</div>
-		</div>
+		        </div>
 			<table className="table table-striped table-hover">
 				<thead>
                 <tr>

@@ -70,7 +70,17 @@ const ListFounder = () => {
     <>
       {user === undefined ? (
         <>
-          <a href="/login">Hãy đăng nhập để thao tác trên hệ thống</a>
+          <div className="container-xl">
+            <div className="table-responsive">
+              <div className="table-wrapper">
+                <div className="table-title">
+
+                </div>
+                <h2 className="m-0"> <a href="/login" className="text-decoration-none">Hãy đăng nhập để thao tác trên hệ thống</a></h2>
+
+            </div>
+          </div>
+          </div>
         </>
       ) : (
         <>
