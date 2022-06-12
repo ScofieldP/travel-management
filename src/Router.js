@@ -14,7 +14,7 @@ import Auth from "./components/Auth/login";
 function Router() {
   return (
     <Routes>
-      <Route exact path="/" element={<FounderList />} />
+      <Route path="/" element={<FounderList />} />
       <Route path="/table" element={<TableList />} />
       <Route path="/typeofFood" element={<TypeofFood />} />
       <Route path="/customer" element={<CustomerList />} />
