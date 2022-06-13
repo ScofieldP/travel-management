@@ -5,10 +5,7 @@ import domain from "../../until/domain";
 function Restaurant({ res, EditRes, GetDataAPI }) {
   async function DeleteRestaurant() {
     if (window.confirm(`Bạn có chắc muốn xóa dữ liệu của ${res.Res_name}?`)) {
-      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
-      await Axios.delete(
-        domain + `/restaurant/${res.Res_id}/${token.data.token}`
-      );
+      await Axios.delete(domain + `/restaurant/${res.Res_id}`);
       GetDataAPI();
     }
   }

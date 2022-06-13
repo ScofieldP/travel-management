@@ -72,9 +72,17 @@ const TableList = () => {
   };
   return (
     <>
-      {user === undefined ? (
+      {user === null ? (
         <>
-          <h2>Hãy đăng nhập để thao tác trên hệ thống</h2>
+          <h2 className="m-0">
+            {" "}
+            <a
+              href="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3001"
+              className="text-decoration-none"
+            >
+              Hãy đăng nhập để thao tác trên hệ thống
+            </a>
+          </h2>
         </>
       ) : (
         <>

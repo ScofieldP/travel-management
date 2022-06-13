@@ -9,6 +9,9 @@ import PutFounder from "./putFounder";
 import UserContext from "../../context/userContext";
 import domain from "../../until/domain";
 import "./founder.css";
+import { findGetParameter } from "../../js/gettoken";
+import authApi from "../../apis/authapi";
+import { useNavigate } from "react-router-dom";
 const ListFounder = () => {
   const [dataAPI, setDataAPI] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
@@ -16,21 +19,37 @@ const ListFounder = () => {
   const [resEditorOpen, setResEditorOpen] = useState(false);
   const [founderEditorOpen, setFounderEditorOpen] = useState(false);
   const [resEditorData, setResEditorData] = useState(null);
-  const { user } = useContext(UserContext);
-  console.log(domain);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (!user) setDataAPI([]);
-    else GetDataAPI();
-  }, [user]);
+    const getUser = async () => {
+      const response = await authApi.getUser(findGetParameter("token"));
+      localStorage.setItem("user", JSON.stringify(response.data.data));
+    };
+    getUser();
+    setUser(JSON.parse(localStorage.getItem("user")));
+    GetDataAPI();
+    navigate("/");
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let data = JSON.parse(localStorage.getItem("user"));
+      setUser(data);
+      GetDataAPI();
+      navigate("/");
+    }
+  }, []);
 
   async function GetDataAPI() {
-    const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+    const userid = JSON.parse(localStorage.user);
     const guestRes = await Axios.get(
-      domain + `/founder/byID/${token.data.token}`
+      domain + `/restaurant/byFounder/${userid.userId}`
     );
-
-    setDataAPI(guestRes.data);
-    setRestaurant(guestRes.data[0].Restaurants);
+    localStorage.setItem("restaurant", JSON.stringify(guestRes.data));
+    setRestaurant(JSON.parse(localStorage.restaurant));
+    console.log(restaurant);
   }
 
   function RenderRestaurant() {
@@ -68,18 +87,23 @@ const ListFounder = () => {
 
   return (
     <>
-      {user === undefined ? (
+      {user === null ? (
         <>
           <div className="container-xl">
             <div className="table-responsive">
               <div className="table-wrapper">
-                <div className="table-title">
-
-                </div>
-                <h2 className="m-0"> <a href="/login" className="text-decoration-none">Hãy đăng nhập để thao tác trên hệ thống</a></h2>
-
+                <div className="table-title"></div>
+                <h2 className="m-0">
+                  {" "}
+                  <a
+                    href="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3001/"
+                    className="text-decoration-none"
+                  >
+                    Hãy đăng nhập để thao tác trên hệ thống
+                  </a>
+                </h2>
+              </div>
             </div>
-          </div>
           </div>
         </>
       ) : (
@@ -129,38 +153,15 @@ const ListFounder = () => {
             </div>
           </div>
           <div>
-            {dataAPI.length > 0 ? (
+            {user ? (
               <>
                 <div className="container-xl">
                   <div className="table-responsive">
                     <div className="table-wrapper">
                       <div className="table-title">
                         <div className="row">
-                          <div className="col-sm-6">
+                          <div className="col-sm-12">
                             <h2>Thông tin nhà sáng lập</h2>
-                          </div>
-                          <div className="col-sm-6">
-                            <a
-                              href="#addEmployeeModal"
-                              className="btn btn-success"
-                              data-toggle="modal"
-                              onClick={() => setFounderEditorOpen(true)}
-                            >
-                              <i className="material-icons">&#xE147;</i>
-                              <span>Cập nhập thông tin Nhà sáng lập</span>
-                            </a>
-                            <Modal
-                              isOpen={founderEditorOpen && user}
-                              style={customStyles}
-                              onRequestClose={!founderEditorOpen}
-                              contentLabel="Example Modal"
-                            >
-                              <PutFounder
-                                setFounderEditorOpen={setFounderEditorOpen}
-                                GetDataAPI={GetDataAPI}
-                                dataAPI={dataAPI}
-                              />
-                            </Modal>
                           </div>
                         </div>
                       </div>
@@ -168,11 +169,13 @@ const ListFounder = () => {
                         <thead>
                           <tr>
                             <th className="csa">Tên nhà sáng lập</th>
+                            <th className="csa">Tên công ty</th>
                             <th className="csa">Địa chỉ mail</th>
                           </tr>
                           <tr>
-                            <td className="csa">{dataAPI[0].Fdr_fullName}</td>
-                            <td className="csa">{dataAPI[0].Fdr_email}</td>
+                            <td className="csa">{user.name}</td>
+                            <td className="csa">{user.companyName}</td>
+                            <td className="csa">{user.email}</td>
                           </tr>
                         </thead>
                       </table>

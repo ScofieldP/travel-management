@@ -48,9 +48,9 @@ function CreateRestaurant({ resEditorData, GetDataAPI, setResEditorOpen }) {
     };
 
     try {
-      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
+      const user = !localStorage.user ? "" : JSON.parse(localStorage.user);
       await Axios.put(
-        domain + `/restaurant/${resEditorData.Res_id}/${token.data.token}`,
+        domain + `/restaurant/${resEditorData.Res_id}/${user.userId}`,
         resData
       );
     } catch (err) {

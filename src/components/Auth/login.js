@@ -12,6 +12,8 @@ const SignIn = () => {
   const { getUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  
+
   async function authLogin(e) {
     e.preventDefault();
 

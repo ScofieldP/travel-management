@@ -30,8 +30,8 @@ function CreateRestaurant({ GetDataAPI, setResCreateOpen }) {
     };
 
     try {
-      const token = !localStorage.token ? "" : JSON.parse(localStorage.token);
-      await Axios.post(domain + `/restaurant/${token.data.token}`, resData);
+      const user = !localStorage.user ? "" : JSON.parse(localStorage.user);
+      await Axios.post(domain + `/restaurant/${user.userId}`, resData);
     } catch (err) {
       if (err.response && err.response.data.errorMessage)
         setErrorMessage(err.response.data.errorMessage);

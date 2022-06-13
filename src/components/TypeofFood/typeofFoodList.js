@@ -15,13 +15,12 @@ const ListTypeOfFood = () => {
   const [toFEditorOpen, setToFEditorOpen] = useState(false);
   const [toFEditorData, setToFEditorData] = useState(null);
   const [resID, setResID] = useState(null);
-  const { user } = useContext(UserContext);
+  const user = !localStorage.user ? "" : JSON.parse(localStorage.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) setDataAPI([]);
-    else GetDataAPI();
-  }, [user]);
+    if (user) GetDataAPI();
+  }, []);
 
   async function GetDataAPI() {
     const getResID = !localStorage.res ? "" : JSON.parse(localStorage.res);
@@ -75,9 +74,17 @@ const ListTypeOfFood = () => {
 
   return (
     <>
-      {user === undefined ? (
+      {user === null ? (
         <>
-          <h2>Hãy đăng nhập để thao tác trên hệ thống</h2>
+          <h2 className="m-0">
+            {" "}
+            <a
+              href="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3001"
+              className="text-decoration-none"
+            >
+              Hãy đăng nhập để thao tác trên hệ thống
+            </a>
+          </h2>
         </>
       ) : (
         <>
