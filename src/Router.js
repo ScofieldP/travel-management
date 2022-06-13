@@ -10,6 +10,7 @@ import OrderList from "./components/OrderFood/OrderList";
 import Payment from "./components/Payment/Payment";
 import TypeofFood from "./components/TypeofFood/typeofFoodList";
 import Auth from "./components/Auth/login";
+import HistoryList from "./components/Statistic/historyList";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/orderFood" element={<OrderList />} />
       <Route path="/checkout" element={<Payment />} />
       <Route path="/login" element={<Auth />} />
+      <Route path="/history" element={<HistoryList />} />
     </Routes>
   );
 }

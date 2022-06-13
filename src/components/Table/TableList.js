@@ -25,7 +25,7 @@ const TableList = () => {
 
   async function GetDataAPI() {
     const getResID = !localStorage.res ? "" : JSON.parse(localStorage.res);
-    if (getResID === null) {
+    if (getResID === "") {
       if (
         window.confirm(
           "Hãy chọn nhà hàng bạn muốn xem Bàn tại Mục tài khoản!!!"

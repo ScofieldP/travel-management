@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import PostFood from "./postFood";
 import PutFood from "./putFood";
 import TypeOfFood from "./fooditem";
-import UserContext from "../../context/userContext";
 import domain from "../../until/domain";
 
 const ListFood = () => {
@@ -24,7 +23,7 @@ const ListFood = () => {
 
   async function GetDataAPI() {
     const getFoodID = !localStorage.tof ? "" : JSON.parse(localStorage.tof);
-    if (getFoodID === null) {
+    if (getFoodID === "") {
       if (
         window.confirm(
           "Hãy chọn Loại thức ăn bạn mún xem tại Mục loại thức ăn!!!"

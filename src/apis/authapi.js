@@ -18,6 +18,14 @@ class AuthApi {
       },
     });
   };
+  getdata = () => {
+    const url = "https://profile.vinhphancommunity.xyz/api/orders";
+    return axios.get(url, {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  };
 }
 
 const authApi = new AuthApi();

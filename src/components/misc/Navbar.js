@@ -129,7 +129,7 @@ function Navbar({ openNavbar, setOpenNavbar }) {
             <span className="tooltip">Doanh thu</span>
           </li>
           <li className={openListNav && !openNavbar ? "subNav" : "subNavClose"}>
-            <a href="/serviceRevenue">
+            <a href="/history">
               <i className="bx bx-grid-alt">
                 <FontAwesomeIcon icon={faSearchDollar} />
               </i>
