@@ -22,7 +22,7 @@ function TypeOfFood({ food, EditFood, GetDataAPI }) {
       </td>
       <td>{food.Fd_description}</td>
       <td>{food.Fd_foodStatus ? "Đang phục vụ" : "Tạm dừng phục vụ"}</td>
-      <td>{food.Fd_image ? "Có hình" : "Không có hình"}</td>
+      <td><img src={food.Fd_image} style={{width:'100px', height:'100px'}} alt=""/> </td>
 
       <td>
         <a
