@@ -6,7 +6,6 @@ import { UserContextProvider } from "./context/userContext";
 import "./App.css";
 import Navbar from "./components/misc/Navbar";
 
-Axios.defaults.withCredentials = true;
 function App() {
   const [openNavbar, setOpenNavbar] = useState(true);
   return (
