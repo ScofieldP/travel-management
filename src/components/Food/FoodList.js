@@ -78,7 +78,7 @@ const ListFood = () => {
           <h2 className="m-0">
             {" "}
             <a
-              href="https://profile.vinhphancommunity.xyz/Login?redirect=http://localhost:3001"
+              href="https://profile.vinhphancommunity.xyz/Login?redirect=http://g08-restaurant-traveloka.surge.sh"
               className="text-decoration-none"
             >
               Hãy đăng nhập để thao tác trên hệ thống
