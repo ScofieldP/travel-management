@@ -15,7 +15,7 @@ const TableList = () => {
   const [tblEditorOpen, setTblEditorOpen] = useState(false);
   const [tblEditorData, setTblEditorData] = useState(false);
   const [resID, setResID] = useState(null);
-  const { user } = useContext(UserContext);
+  const user = !localStorage.user ? "" : JSON.parse(localStorage.user);
   const navigate = useNavigate();
 
   useEffect(() => {
