@@ -11,7 +11,7 @@ function CreatTypeofFood({ toFID, GetDataAPI, setFoodCreateOpen }) {
   const [measureUnit, setMeasureUnit] = useState("");
   const [description, setDescription] = useState("");
   const [foodStatus, setFoodStatus] = useState(true);
-  const [image, setImage] = useState(true);
+  const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
 
   async function saveRestaurant(e) {
@@ -23,7 +23,7 @@ function CreatTypeofFood({ toFID, GetDataAPI, setFoodCreateOpen }) {
       Fd_measureUnit: measureUnit ? measureUnit : undefined,
       Fd_description: description ? description : undefined,
       Fd_foodStatus: foodStatus ? foodStatus : true,
-      Fd_image: image ? image : true,
+      Fd_image: image ? image : undefined,
     };
 
     try {
@@ -109,6 +109,20 @@ function CreatTypeofFood({ toFID, GetDataAPI, setFoodCreateOpen }) {
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <label htmlFor="image">Link hình</label>
+              </th>
+              <td>
+                <input
+                  className="formInput1"
+                  id="image"
+                  type="text"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
                 />
               </td>
             </tr>

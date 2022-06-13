@@ -11,7 +11,7 @@ function CreatTypeofFood({ foodEditorData, GetDataAPI, setFoodEditorOpen }) {
   const [measureUnit, setMeasureUnit] = useState("");
   const [description, setDescription] = useState("");
   const [foodStatus, setFoodStatus] = useState(true);
-  const [image, setImage] = useState(true);
+  const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function CreatTypeofFood({ foodEditorData, GetDataAPI, setFoodEditorOpen }) {
       setFoodStatus(
         foodEditorData.Fd_foodStatus ? "Còn phục vụ" : "Tạm dừng phục vụ"
       );
-      setImage(foodEditorData.Fd_image ? "Có hình" : "ko có hình");
+      setImage(foodEditorData.Fd_image ? foodEditorData.Fd_image : "");
     }
   }, [foodEditorData]);
 
@@ -40,7 +40,7 @@ function CreatTypeofFood({ foodEditorData, GetDataAPI, setFoodEditorOpen }) {
       Fd_measureUnit: measureUnit ? measureUnit : undefined,
       Fd_description: description ? description : undefined,
       Fd_foodStatus: foodStatus ? foodStatus : true,
-      Fd_image: image ? image : true,
+      Fd_image: image ? image : undefined,
     };
 
     try {
@@ -147,18 +147,16 @@ function CreatTypeofFood({ foodEditorData, GetDataAPI, setFoodEditorOpen }) {
             </tr>
             <tr>
               <th scope="row">
-                <label htmlFor="tf">Hình ảnh</label>
+                <label htmlFor="image">Link hình</label>
               </th>
               <td>
-                <select
-                  id="tf"
+                <input
                   className="formInput1"
+                  id="image"
+                  type="text"
+                  value={image}
                   onChange={(e) => setImage(e.target.value)}
-                >
-                  <option value="true">Chọn</option>
-                  <option value="true">Có hình</option>
-                  <option value="false">Hết hình</option>
-                </select>
+                />
               </td>
             </tr>
           </tbody>
